@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Byte Open-AI Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="chat-container">
+    <h1>Byte Open-AI Chat</h1>
+
+    <div id="chat-box"></div>
+
+    <div class="input-area">
+        <input type="text" id="user-input" placeholder="Ask something..." />
+        <button onclick="sendMessage()">Send</button>
+        <button onclick="resetChat()">Reset Chat</button>
+    </div>
+</div>
+
+<script>
+async function sendMessage() {
+    const input = document.getElementById("user-input");
+    const chatBox = document.getElementById("chat-box");
+    const message = input.value;
+
+    if (!message) return;
+
+    chatBox.innerHTML += `<div class="user">You: ${message}</div>`;
+
+    const response = await fetch("/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: message })
+    });
+
+    const data = await response.json();
+
+    chatBox.innerHTML += `<div class="ai">AI: ${data.response}</div>`;
+
+    input.value = "";
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+async function resetChat() {
+    await fetch("/reset", { method: "POST" });
+    document.getElementById("chat-box").innerHTML = "";
+}
+</script>
+
+</body>
+</html>
