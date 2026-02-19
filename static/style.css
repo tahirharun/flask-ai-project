@@ -6,14 +6,12 @@ body {
     justify-content: center;
     margin-top: 50px;
 }
-
 .chat-container {
     width: 500px;
     background: #1e1e1e;
     padding: 20px;
     border-radius: 10px;
 }
-
 #chat-box {
     height: 300px;
     overflow-y: auto;
@@ -22,29 +20,24 @@ body {
     margin-bottom: 10px;
     border-radius: 5px;
 }
-
 .user {
     color: #4fc3f7;
     margin-bottom: 5px;
 }
-
 .ai {
     color: #81c784;
     margin-bottom: 10px;
 }
-
 .input-area {
     display: flex;
     gap: 10px;
 }
-
 input {
     flex: 1;
     padding: 8px;
     border-radius: 5px;
     border: none;
 }
-
 button {
     padding: 8px 12px;
     background: #4fc3f7;
@@ -52,7 +45,6 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
-
 button:hover {
     background: #29b6f6;
 }
