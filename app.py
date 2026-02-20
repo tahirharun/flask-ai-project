@@ -7,7 +7,6 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-# AI response endpoint
 @app.route("/ask", methods=["POST"])
 def ask():
     user_message = request.json.get("message")
